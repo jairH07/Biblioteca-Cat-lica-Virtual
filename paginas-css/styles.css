@@ -1,0 +1,602 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Cinzel", serif;
+}
+
+header {
+  width: 100%;
+  height: 10vh; /* Define a altura fixa do header */
+  position: fixed;
+  top: 0;
+  background-color: aliceblue;
+  z-index: 1100; /* Mantém o header sempre acima */
+}
+
+.carousel {
+  width: 100%;
+  height: 40vh;
+  position: relative; /* Mantém no fluxo do layout */
+  margin-top: 10vh; /* Empurra o carrossel para baixo, respeitando o header */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.menu-button {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.lateral {
+  width: 250px;
+  background-color: #f4f1e9;
+  color: white;
+  height: 100vh;
+  transition: transform 0.3s ease-in-out;
+}
+
+.lateral.show {
+  transform: translateX(0%);
+}
+
+.menu-lateral ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 20px;
+}
+
+.menu-lateral ul li {
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+  color: black;
+}
+
+.menu-lateral ul li:hover {
+  background-color: gray;
+}
+
+main {
+  flex: 1;
+  background-color: pink;
+}
+
+header {
+  width: 100%;
+  height: 10%;
+  background-color: aliceblue;
+  text-align: center;
+  align-content: center;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+header ul li {
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+header ul li:hover {
+  border-bottom: 1px solid black;
+}
+
+.funcionalidade {
+  display: none;
+  padding: 20px;
+  width: 100%;
+  height: 100dvh; /* Define um tamanho fixo */
+  overflow-y: auto; /* Permite rolagem apenas na vertical */
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.funcionalidade.active {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: block; /* Garante que apareça no mobile */
+    position: fixed;
+    z-index: 1200;
+  }
+
+  .lateral {
+    position: fixed;
+    transform: translateX(-100%);
+    display: block; /* Garante que apareça no mobile */
+    z-index: 1200;
+  }
+}
+
+& .logo {
+  width: 100%;
+
+  height: 20%;
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+& .logo img {
+  max-width: 80%; /* Ajusta a largura para caber bem na div */
+  height: auto; /* Mantém a proporção */
+  object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+}
+
+/*editando o menu lateral*/
+.prateleira-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.prateleira {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background-color: #eae0c8;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.prateleira img {
+  width: 120px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/*editando o home*/
+html {
+  scroll-behavior: smooth;
+}
+
+#casa,
+#sobre,
+#igreja,
+#contacto,
+#dev {
+  width: 100%;
+  height: 90%;
+  z-index: 100;
+  transition: 0.5s ease-in-out;
+}
+#casa {
+  background-color: #f4f1e9;
+  height: 109%;
+  & .carousel {
+    position: relative;
+    width: 100%;
+    height: 40%;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  & .carousel-container {
+    display: flex;
+    transition: transform 1s ease-in-out; /* Suaviza a transição */
+  }
+  & .carousel-item {
+    width: 100%;
+  }
+
+  & .info {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+}
+
+#sobre {
+  background-image: url(https://img.freepik.com/fotos-gratis/visao-dos-elementos-arquitetonicos-da-igreja_23-2150319335.jpg?t=st=1745489218~exp=1745492818~hmac=52ef2c167fd897b77be9349b92a8ff80f04cf41a76e036677aa829380eed665e&w=1380);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  height: 70%;
+  scroll-behavior: smooth;
+  color: white;
+  font-size: 20px;
+}
+
+.sobre-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background-color: black;
+  animation: blink 0.6s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.escondido {
+  visibility: hidden;
+}
+
+#igreja {
+  background-color: tomato;
+  padding: 40px;
+  text-align: center;
+  background-color: #f4f1e9;
+  color: #2d2d2d;
+}
+
+.highlight {
+  background-color: #d4c2a8;
+  padding: 15px;
+  border-radius: 10px;
+  font-style: italic;
+  display: inline-block; /* Garante que o fundo só envolva o texto */
+  max-width: 80%; /* Limita a largura para não quebrar o layout */
+  margin: 10px auto; /* Mantém um espaçamento uniforme */
+}
+
+.quote {
+  background-color: #fdfdfd;
+  color: #000;
+  padding: 20px;
+  border-left: 5px solid #b69b7f;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.separator {
+  width: 50%;
+  height: 2px;
+  background-color: #b69b7f;
+  margin: 20px auto;
+}
+
+#contacto {
+  background-color: #f4f1e9;
+  padding: 40px;
+  text-align: center;
+  height: auto;
+}
+
+.highlight {
+  background-color: #d4c2a8;
+  padding: 15px;
+  border-radius: 10px;
+  font-style: italic;
+  display: inline-block;
+  max-width: 80%;
+  margin: 10px auto;
+}
+
+.quote {
+  background-color: #fdfdfd;
+  color: #000;
+  padding: 20px;
+  border-left: 5px solid #b69b7f;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.separator {
+  width: 50%;
+  height: 2px;
+  background-color: #b69b7f;
+  margin: 20px auto;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #b69b7f;
+  resize: none;
+}
+
+button {
+  background-color: #b69b7f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #967959;
+}
+
+/* Estilização do modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fdfdfd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2d2d2d;
+}
+
+.modal button {
+  margin-top: 10px;
+  background-color: #b69b7f;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal button:hover {
+  background-color: #967959;
+}
+#dev {
+  background-color: #f4f1e9;
+  height: auto;
+}
+
+.lf,
+.rh {
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+  margin-top: 5%;
+}
+.lf {
+  text-align: center;
+}
+
+.rh {
+  text-align: center;
+}
+
+.bandeiras {
+  display: inline-block;
+  width: 49%;
+  height: auto; /* Mantém proporção automática */
+  display: block;
+  margin: 20px auto; /* Centraliza a imagem */
+  border-radius: 5px; /* Bordas suaves */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+}
+
+
+.footer1{
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  background-color: #967959;
+  & ul {
+    & li {
+      display: inline-block;
+      & a {
+        & i {
+          font-size: 120%;
+          color: #f4f1e9;
+        }
+      }
+    }
+  }
+}
+
+.prateleira{
+  width: 15%;
+}
+
+
+/*rezas*/
+
+.funcionalidade {
+  border: 1px solid #967959;
+  padding: 20px;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #f4f1e9;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+.prayer-button,
+.day-button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #967959;
+  color: white;
+}
+.prayer-button:hover,
+.day-button:hover {
+  background-color: #715c47;
+}
+.prayer-container {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #967959;
+  background-color: white;
+  border-radius: 5px;
+  text-align: left;
+}
+.prayer-container h3,
+.prayer-container h4 {
+  color: #715c47;
+}
+.mystery-container {
+  display: none;
+  margin-top: 15px;
+}
+
+.container {
+  
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid #967959;
+  text-align: left;
+}
+h3,
+h4,
+h5 {
+  color: #715c47;
+}
+.section {
+  margin-bottom: 20px;
+}
+
+/*cursos*/
+
+.funcionalidade {
+  border: 2px solid #967959;
+  padding: 20px;
+  margin: 20px auto;
+  width: 100%;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #f4f1e9;
+}
+
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.course-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 18px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  background-color: #967959;
+  color: white;
+  transition: 0.3s;
+}
+
+.course-button:hover {
+  background-color: #715c47;
+}
+
+.course-image {
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.course-content {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid #967959;
+  background-color: white;
+  border-radius: 5px;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.video-container {
+  margin-top: 15px;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #967959;
+  color: white;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #715c47;
+}
