@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../paginas-css/styles.css">
+    <title>Biblioteca Virtual</title>
+    <style>
+      .prateleira-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.prateleira {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.prateleira img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+@media (min-width: 600px) {
+    .prateleira {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (min-width: 900px) {
+    .prateleira {
+        width: calc(33.33% - 20px);
+    }
+}
+
+    </style>
+  </head>
+  <body>
+    <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+
+    <div class="lateral" id="menuLateral">
+      <div style="background-color: #2d2d2d;" class="logo">
+        <img src="../photos/virgo_maria__1___1_-removebg-preview.png" alt="" />
+      </div>
+      <div class="menu-lateral">
+        <ul>
+          <li onclick="mostrarFuncionalidade('livros')">📚 Livros</li>
+          <li onclick="mostrarFuncionalidade('Rezas')">🙏 Rezas.</li>
+          <li onclick="mostrarFuncionalidade('cursos')">📂 Cursos</li>
+          <li onclick="mostrarFuncionalidade('Noticias')">📰 Noticias</li>
+        </ul>
+      </div>
+    </div>
+
+    <main>
+      <header>
+        <ul>
+          <li onclick="mostrarFuncionalidade('Home')">
+            <a href="#casa">Home</a>
+          </li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#igreja">Igreja</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#dev">Dev</a></li>
+        </ul>
+      </header>
+      <section id="Home" class="funcionalidade active">
+        <section id="casa">
+          <br />
+          <div class="carousel">
+            <div class="carousel-container">
+              <img src="../photos/1.png" class="carousel-item" />
+              <img src="../photos/2.png" class="carousel-item" />
+              <img src="../photos/3.png" class="carousel-item" />
+            </div>
+          </div>
+          <div class="info">
+            <h1 style="font-size: 50px; color: goldenrod">
+              <strong
+                >Ventris
+                <span style="background-color: #ccc; color: black"
+                  >Mariæ</span
+                ></strong
+              >
+            </h1>
+            <h2 style="font-size: 90px; color: goldenrod">✝</h2>
+          </div>
+        </section>
+        <section id="sobre">
+          <div class="sobre-container" id="sobreDiv">
+            <div class="sobre">
+              <p id="texto"></p>
+              <span class="cursor"></span>
+            </div>
+          </div>
+        </section>
+        <section id="igreja">
+          <p>
+            <span class="highlight">
+              A Igreja Católica é uma comunidade de fé que segue os ensinamentos
+              de Jesus Cristo e se vê como a continuação da missão dos
+              apóstolos.
+            </span>
+          </p>
+
+          <div class="separator"></div>
+
+          <p>
+            Ela é fundamentada na sucessão apostólica, na tradição sagrada e na
+            celebração dos sacramentos, sendo a Eucaristia o centro da vida
+            cristã.
+          </p>
+
+          <div class="quote">
+            "Mais do que uma instituição, a Igreja Católica busca ser um caminho
+            de santidade e comunhão com Deus, guiando os fiéis através da
+            oração, da caridade e da evangelização."
+          </div>
+
+          <p>
+            Sua riqueza espiritual e intelectual atravessa séculos,
+            influenciando a cultura, a arte e o pensamento moral da humanidade.
+          </p>
+        </section>
+        <section id="contacto">
+          <h2>Contacto</h2>
+
+          <p class="highlight">
+            Se deseja entrar em contato, estamos aqui para ajudar! Envie sua
+            sugestão abaixo.
+          </p>
+
+          <div class="separator"></div>
+
+          <div class="quote">
+            "A escuta e o diálogo são reflexos da caridade cristã."
+          </div>
+
+          <p>Deixe sua sugestão:</p>
+
+          <div class="form-container">
+            <label for="sugestao">Escreva sua sugestão:</label>
+            <textarea
+              id="sugestao"
+              placeholder="Digite sua sugestão aqui..."
+            ></textarea>
+            <button onclick="enviarSugestao()">Enviar</button>
+          </div>
+        </section>
+        <div class="modal" id="modalConfirmacao">
+          <p>✅ Sugestão enviada com sucesso! Obrigado por sua contribuição.</p>
+          <button onclick="fecharModal()">Fechar</button>
+        </div>
+        <footer id="dev" class="footer">
+          <div class="lf">
+            <img class="bandeiras" src="https://cdn.pixabay.com/photo/2016/01/09/22/26/vatican-flag-1131092_1280.png" alt="Bandeira do Vaticano">
+        </div>
+        <div class="rh">
+          <img class="bandeiras" src="https://cdn.pixabay.com/photo/2013/07/13/14/16/mozambique-162366_1280.png" alt="Bandeira do Vaticano"></img>
+        </div>
+          </div>
+          <div class="footer1">
+            <p class="footer-text">Jair Hilário. Todos os direitos reservados</p><br>
+            <p>KIIT © 2025</p>
+            <ul>
+              <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-square-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+            </ul>
+          </div>
+        </footer>
+
+        <!-- Adicionando Font Awesome para carregar os ícones -->
+        <script
+          src="https://kit.fontawesome.com/YOUR-KIT-ID.js"
+          crossorigin="anonymous"
+        ></script>
+      </section>
+      <section id="livros" class="funcionalidade">
+        <h2>Livros Disponíveis</h2>
+        <p>Aqui estão os livros cadastrados...</p>
+    
+        <div class="prateleira-container">
+            <div class="prateleira">
+                <img src="../livros/capas/catecismo.png" alt="Catecismo">
+                <p><strong>Catecismo da Igreja Católica</strong></p>
+                <p>Autor: <strong>Comissão de Cardeais e Bispos</strong></p>
+                <a href="../livros/Catecismo da Igreja Católica.pdf">Ler</a>
+            </div>
+            <div class="prateleira">
+              <img src="../livros/capas/latim.png" alt="Catecismo">
+              <p><strong>Biblia Sacra Vulgata</strong></p>
+              <p>Autor: <strong>São Jerônimo</strong></p>
+              <a href="../livros/labibliavulgatal01scio.pdf">Ler</a>
+          </div>
+          <div class="prateleira">
+            <img src="../livros/capas/canon.png" alt="Catecismo">
+            <p><strong>Biblia Sacra Vulgata</strong></p>
+            <p>Autor: <strong>São Jerônimo</strong></p>
+            <a href="../livros/codex-iuris-canonici_po.pdf">Ler</a>
+        </div>
+            <div class="prateleira">
+                <img src="../livros/capas/santa faustina.png" alt="Santa Faustina">
+                <p><strong>Diário de Santa Faustina</strong></p>
+                <p>Autor: <strong>Maria Faustina Kowalska</strong></p>
+                <a href="../livros/Diario de Maria Faustina Kowalska.pdf">Ler</a>
+            </div>
+            <div class="prateleira">
+                <img src="../livros/capas/Screenshot 2025-04-28 130241.png" alt="Joseph Ratzinger">
+                <p><strong>Joseph Ratzinger</strong></p>
+                <p>Autor: <strong>Bento XVI</strong></p>
+                <a href="../livros/JOSEPH-RATZINGER.pdf">Ler</a>
+            </div>
+            <div class="prateleira">
+                <img src="../livros/capas/verdadeira devo.png" alt="Verdadeira Devoção">
+                <p><strong>Tratado da Verdadeira Devoção</strong></p>
+                <p>Autor: <strong>São Luís Maria Grignion de Montfort</strong></p>
+                <a href="../livros/Tratado de la verdadera devoción a la Santísima Virgen - San Luis Maria Grignion de Montfort.pdf">Ler</a>
+            </div>
+            <div class="prateleira">
+                <img src="../livros/capas/acolitos.png" alt="Cerimonial dos Acólitos">
+                <p><strong>Cerimonial dos Acólitos</strong></p>
+                <p>Autor: <strong>Alberto Zwaenepoel</strong></p>
+                <a href="../livros/Cerimonial dos Acólitos.pdf">Ler</a>
+            </div>
+            <div class="prateleira">
+                <img src="../livros/capas/a biblia do meu dia a dia.png" alt="A Bíblia no Meu Dia a Dia">
+                <p><strong>A Bíblia no Meu Dia a Dia</strong></p>
+                <p>Autor: <strong>Pe. Jonas Abib</strong></p>
+                <a href="../livros/Biblia-no-meu-dia-a-dia.pdf">Ler</a>
+            </div>
+            <div class="prateleira">
+                <img src="../livros/capas/conficoes.png" alt="Confissões">
+                <p><strong>Confissões</strong></p>
+                <p>Autor: <strong>Santo Agostinho</strong></p>
+                <a href="../livros/Confissões.pdf">Ler</a>
+            </div>
+            <div class="prateleira">
+                <img src="../livros/capas/orando com poder.png" alt="Orando com Poder">
+                <p><strong>Orando com Poder</strong></p>
+                <p>Autor: <strong>Monsenhor Jonas Abib</strong></p>
+                <a href="../livros/Orando-com-poder.pdf">Ler</a>
+            </div>
+            <div class="prateleira">
+                <img src="../livros/capas/imitacao de cristo.png" alt="Imitação de Cristo">
+                <p><strong>Imitação de Cristo</strong></p>
+                <p>Autor: <strong>Tomás de Kempis</strong></p>
+                <a href="../livros/Imitação de Cristo.pdf">Ler</a>
+            </div>
+            <div class="prateleira">
+                <img src="../livros/capas/suma teologica.png" alt="Suma Teológica">
+                <p><strong>Suma Teológica</strong></p>
+                <p>Autor: <strong>Santo Tomás de Aquino</strong></p>
+                <a href="../livros/Suma-teológica.pdf">Ler</a>
+            </div>
+        </div>
+        <p>Mais livros a serem atualizados...</p>
+    </section>
+       
+    
+    <section id="Rezas" class="funcionalidade">
+      <h2>Orações Católicas</h2>
+
+      <div class="button-container">
+        <button class="prayer-button" onclick="showPrayer('rosario')">
+          Rosário
+        </button>
+        <button class="prayer-button" onclick="showPrayer('angelus')">
+          Oração do Angelus
+        </button>
+        <button class="prayer-button" onclick="showPrayer('lectio')">
+          Lectio Divina
+        </button>
+        <button class="prayer-button" onclick="showPrayer('ladainhas')">
+          Ladainhas
+        </button>
+      </div>
+
+      <div id="rosario" class="prayer-container">
+        <h3>Rosário</h3>
+        <p>
+          O Rosário é uma oração meditativa baseada na vida de Jesus e Maria.
+        </p>
+        <p>
+          <strong>Como rezar:</strong> Reza-se um conjunto de Ave-Marias e
+          Pais-Nossos, meditando sobre os mistérios.
+        </p>
+
+        <h4>Escolha um dia da semana:</h4>
+        <div class="button-container">
+          <button class="day-button" onclick="showMystery('domingo')">
+            Domingo
+          </button>
+          <button class="day-button" onclick="showMystery('segunda')">
+            Segunda-feira
+          </button>
+          <button class="day-button" onclick="showMystery('terca')">
+            Terça-feira
+          </button>
+          <button class="day-button" onclick="showMystery('quarta')">
+            Quarta-feira
+          </button>
+          <button class="day-button" onclick="showMystery('quinta')">
+            Quinta-feira
+          </button>
+          <button class="day-button" onclick="showMystery('sexta')">
+            Sexta-feira
+          </button>
+          <button class="day-button" onclick="showMystery('sabado')">
+            Sábado
+          </button>
+        </div>
+        <div id="domingo" class="mystery-container">
+          <h4>Mistérios Gloriosos (Quarta-feira & Domingo)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="segunda" class="mystery-container">
+          <h4>Mistérios Gozosos (Segunda-feira & Sábado)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="terca" class="mystery-container">
+          <h4>Mistérios Dolorosos (Terça-feira & Sexta-feira)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="quarta" class="mystery-container">
+          <h4>Mistérios Gloriosos (Quarta-feira & Domingo)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="quinta" class="mystery-container">
+          <h4>Mistérios Luminosos (Quinta-feira)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="sexta" class="mystery-container">
+          <h4>Mistérios Luminosos (Quinta-feira)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="sabado" class="mystery-container">
+          <h4>Mistérios Luminosos (Quinta-feira)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oração do Angelus -->
+      <div id="angelus" class="prayer-container">
+        <h3>Oração do Angelus</h3>
+        <p><strong>V. O Anjo do Senhor anunciou a Maria,</strong></p>
+        <p><strong>R. E ela concebeu pelo poder do Espírito Santo.</strong></p>
+        <p>Ave Maria...</p>
+
+        <p><strong>V. Eis aqui a serva do Senhor,</strong></p>
+        <p><strong>R. Faça-se em mim segundo a vossa palavra.</strong></p>
+        <p>Ave Maria...</p>
+
+        <p><strong>V. E o Verbo se fez carne,</strong></p>
+        <p><strong>R. E habitou entre nós.</strong></p>
+        <p>Ave Maria...</p>
+
+        <p>
+          <strong>Oremos:</strong> Infundi, Senhor, em nossas almas a vossa
+          graça...
+        </p>
+        <p>Por Cristo, Senhor nosso. **Amém.**</p>
+      </div>
+
+      <!-- Lectio Divina -->
+      <div id="lectio" class="prayer-container">
+        <h3>Lectio Divina</h3>
+        <p>
+          A Lectio Divina é um método de oração baseado na leitura e meditação
+          das Escrituras.
+        </p>
+        <h4>Passos:</h4>
+        <ul>
+          <li>
+            <strong>Leitura (Lectio)</strong>: Leia atentamente um trecho da
+            Bíblia.
+          </li>
+          <li>
+            <strong>Meditação (Meditatio)</strong>: Reflita sobre o significado
+            do texto.
+          </li>
+          <li>
+            <strong>Oração (Oratio)</strong>: Dirija suas preces a Deus com base
+            na leitura.
+          </li>
+          <li>
+            <strong>Contemplação (Contemplatio)</strong>: Permita que Deus fale
+            ao seu coração.
+          </li>
+        </ul>
+        <p>
+          Este processo profundo permite uma conexão íntima com Deus através das
+          Escrituras.
+        </p>
+      </div>
+
+      <!-- Ladainhas -->
+      <div id="ladainhas" class="prayer-container">
+        <h3>Ladainhas</h3>
+        <p>
+          As Ladainhas são súplicas e invocações dirigidas a Deus e aos santos.
+        </p>
+        <h4>Exemplo de Ladainha:</h4>
+        <p>
+          <strong>Senhor, tende piedade de nós.</strong> - Senhor, tende piedade
+          de nós.
+        </p>
+        <p>
+          <strong>Cristo, tende piedade de nós.</strong> - Cristo, tende piedade
+          de nós.
+        </p>
+        <p><strong>Santa Mãe de Deus, rogai por nós.</strong></p>
+        <p><strong>São Miguel Arcanjo, rogai por nós.</strong></p>
+        <p>
+          <strong>Todos os santos e santas de Deus, intercedei por nós.</strong>
+        </p>
+        <p>
+          Estas invocações podem ser adaptadas conforme a devoção e necessidade
+          do fiel.
+        </p>
+      </div>
+    </section><section id="Rezas" class="funcionalidade">
+      <h2>Orações Católicas</h2>
+
+      <div class="button-container">
+        <button class="prayer-button" onclick="showPrayer('rosario')">
+          Rosário
+        </button>
+        <button class="prayer-button" onclick="showPrayer('angelus')">
+          Oração do Angelus
+        </button>
+        <button class="prayer-button" onclick="showPrayer('lectio')">
+          Lectio Divina
+        </button>
+        <button class="prayer-button" onclick="showPrayer('ladainhas')">
+          Ladainhas
+        </button>
+      </div>
+
+      <div id="rosario" class="prayer-container">
+        <h3>Rosário</h3>
+        <p>
+          O Rosário é uma oração meditativa baseada na vida de Jesus e Maria.
+        </p>
+        <p>
+          <strong>Como rezar:</strong> Reza-se um conjunto de Ave-Marias e
+          Pais-Nossos, meditando sobre os mistérios.
+        </p>
+
+        <h4>Escolha um dia da semana:</h4>
+        <div class="button-container">
+          <button class="day-button" onclick="showMystery('domingo')">
+            Domingo
+          </button>
+          <button class="day-button" onclick="showMystery('segunda')">
+            Segunda-feira
+          </button>
+          <button class="day-button" onclick="showMystery('terca')">
+            Terça-feira
+          </button>
+          <button class="day-button" onclick="showMystery('quarta')">
+            Quarta-feira
+          </button>
+          <button class="day-button" onclick="showMystery('quinta')">
+            Quinta-feira
+          </button>
+          <button class="day-button" onclick="showMystery('sexta')">
+            Sexta-feira
+          </button>
+          <button class="day-button" onclick="showMystery('sabado')">
+            Sábado
+          </button>
+        </div>
+        <div id="domingo" class="mystery-container">
+          <h4>Mistérios Gloriosos (Quarta-feira & Domingo)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="segunda" class="mystery-container">
+          <h4>Mistérios Gozosos (Segunda-feira & Sábado)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="terca" class="mystery-container">
+          <h4>Mistérios Dolorosos (Terça-feira & Sexta-feira)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="quarta" class="mystery-container">
+          <h4>Mistérios Gloriosos (Quarta-feira & Domingo)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="quinta" class="mystery-container">
+          <h4>Mistérios Luminosos (Quinta-feira)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="sexta" class="mystery-container">
+          <h4>Mistérios Luminosos (Quinta-feira)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="sabado" class="mystery-container">
+          <h4>Mistérios Luminosos (Quinta-feira)</h4>
+          <div class="container">
+            <h2>Oração do Rosário</h2>
+
+            <div class="section">
+              <h3>Pelo Sinal da Santa Cruz</h3>
+              <p>
+                Livrai-nos, Deus, nosso Senhor, dos nossos inimigos. Em nome do
+                Pai, do Filho e do Espírito Santo.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Oração Inicial</h3>
+              <p>
+                Ó Deus, cujo Filho unigênito nos alcançou o prêmio da salvação
+                eterna, com Sua vida, morte e ressurreição, vos pedimos que, ao
+                venerarmos os mistérios do Rosário da Bem-Aventurada Virgem
+                Maria, possamos viver seus ensinamentos e alcançar as promessas
+                que eles contêm.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Pelo Papa e Suas Intenções</h3>
+              <h4>Profissão de Fé</h4>
+              <p>
+                <strong>Creio em Deus Pai Todo-Poderoso</strong>, criador do céu
+                e da terra...
+              </p>
+
+              <h4>Oração do Pai-Nosso</h4>
+              <p>
+                Pai nosso que estais nos céus, santificado seja o vosso nome...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Em Honra à Santíssima Trindade</h3>
+              <ul>
+                <li>
+                  Em honra a Deus Pai que nos criou e criou a Virgem Maria:
+                  <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra a Jesus Cristo, Filho de Deus, Filho da Virgem Maria,
+                  nosso Redentor: <strong>Ave Maria...</strong>
+                </li>
+                <li>
+                  Em honra ao Espírito Santo, nosso Deus santificador, Esposo da
+                  Virgem Maria: <strong>Ave Maria...</strong>
+                </li>
+              </ul>
+
+              <h4>Glória</h4>
+              <p>
+                Glória ao Pai, ao Filho e ao Espírito Santo, como era no
+                princípio, agora e sempre. Amém.
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Súplica de Intercessão</h3>
+              <p>
+                Ó meu Jesus, perdoai-nos, livrai-nos do fogo do inferno, levai
+                as almas todas para o céu e socorrei principalmente as que mais
+                precisarem...
+              </p>
+            </div>
+
+            <div class="section">
+              <h3>Invocações</h3>
+              <ul>
+                <li>
+                  Ó Maria concebida sem pecado, rogai por nós que recorremos a
+                  Vós.
+                </li>
+                <li>
+                  Jesus manso e humilde de coração, fazei o nosso coração
+                  semelhante ao Vosso.
+                </li>
+                <li>
+                  <strong>Nossa Senhora de Guadalupe, rogai por nós.</strong>
+                </li>
+                <li><strong>São José, rogai por nós.</strong></li>
+                <li>
+                  <strong
+                    >Santos Miguel, Gabriel e Rafael Arcanjos, rogai por nós e
+                    defendei-nos no combate.</strong
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3>Intenções</h3>
+              <p>Rezemos este terço pelas seguintes intenções...</p>
+            </div>
+            <ul>
+              <li><strong>1</strong></li>
+              <li><strong>2</strong></li>
+              <li><strong>3</strong></li>
+              <li><strong>4</strong></li>
+              <li><strong>5</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oração do Angelus -->
+      <div id="angelus" class="prayer-container">
+        <h3>Oração do Angelus</h3>
+        <p><strong>V. O Anjo do Senhor anunciou a Maria,</strong></p>
+        <p><strong>R. E ela concebeu pelo poder do Espírito Santo.</strong></p>
+        <p>Ave Maria...</p>
+
+        <p><strong>V. Eis aqui a serva do Senhor,</strong></p>
+        <p><strong>R. Faça-se em mim segundo a vossa palavra.</strong></p>
+        <p>Ave Maria...</p>
+
+        <p><strong>V. E o Verbo se fez carne,</strong></p>
+        <p><strong>R. E habitou entre nós.</strong></p>
+        <p>Ave Maria...</p>
+
+        <p>
+          <strong>Oremos:</strong> Infundi, Senhor, em nossas almas a vossa
+          graça...
+        </p>
+        <p>Por Cristo, Senhor nosso. **Amém.**</p>
+      </div>
+
+      <!-- Lectio Divina -->
+      <div id="lectio" class="prayer-container">
+        <h3>Lectio Divina</h3>
+        <p>
+          A Lectio Divina é um método de oração baseado na leitura e meditação
+          das Escrituras.
+        </p>
+        <h4>Passos:</h4>
+        <ul>
+          <li>
+            <strong>Leitura (Lectio)</strong>: Leia atentamente um trecho da
+            Bíblia.
+          </li>
+          <li>
+            <strong>Meditação (Meditatio)</strong>: Reflita sobre o significado
+            do texto.
+          </li>
+          <li>
+            <strong>Oração (Oratio)</strong>: Dirija suas preces a Deus com base
+            na leitura.
+          </li>
+          <li>
+            <strong>Contemplação (Contemplatio)</strong>: Permita que Deus fale
+            ao seu coração.
+          </li>
+        </ul>
+        <p>
+          Este processo profundo permite uma conexão íntima com Deus através das
+          Escrituras.
+        </p>
+      </div>
+
+      <!-- Ladainhas -->
+      <div id="ladainhas" class="prayer-container">
+        <h3>Ladainhas</h3>
+        <p>
+          As Ladainhas são súplicas e invocações dirigidas a Deus e aos santos.
+        </p>
+        <h4>Exemplo de Ladainha:</h4>
+        <p>
+          <strong>Senhor, tende piedade de nós.</strong> - Senhor, tende piedade
+          de nós.
+        </p>
+        <p>
+          <strong>Cristo, tende piedade de nós.</strong> - Cristo, tende piedade
+          de nós.
+        </p>
+        <p><strong>Santa Mãe de Deus, rogai por nós.</strong></p>
+        <p><strong>São Miguel Arcanjo, rogai por nós.</strong></p>
+        <p>
+          <strong>Todos os santos e santas de Deus, intercedei por nós.</strong>
+        </p>
+        <p>
+          Estas invocações podem ser adaptadas conforme a devoção e necessidade
+          do fiel.
+        </p>
+      </div>
+    </section>
+
+    <section id="cursos" class="funcionalidade">
+      <h2>Liturgia</h2>
+      <p>Aprofunde-se na fé com cursos sobre temas essenciais da Igreja.</p>
+    
+      <div class="course-container" id="course-selection">
+        <button class="course-button" onclick="showCourse('consagracao')">
+          <img
+            src="https://i.pinimg.com/736x/d3/11/ed/d311eda087220acd36cb6fcd7432d977.jpg"
+            alt="Consagração a Nossa Senhora"
+            class="course-image"
+          />
+          Consagração a Nossa Senhora
+        </button>
+        <button class="course-button" onclick="showCourse('angelologia')">
+          <img
+            src="https://tse2.mm.bing.net/th/id/OIP.RJNrQXKuaFkYVXJF6ofHIAHaNU?w=807&h=1451&rs=1&pid=ImgDetMain"
+            alt="Angelologia"
+            class="course-image"
+          />
+          Angelologia
+        </button>
+        <button class="course-button" onclick="showCourse('mariologia')">
+          <img
+            src="https://tse3.mm.bing.net/th/id/OIP.Wf-f90aoKvqcLeNVKzf-bAAAAA?w=365&h=640&rs=1&pid=ImgDetMain"
+            alt="Mariologia"
+            class="course-image"
+          />
+          Mariologia
+        </button>
+        <button class="course-button" onclick="showCourse('dogmas')">
+          <img src="https://i.pinimg.com/originals/14/34/fa/1434fa5ac72244063754b035ac59da3e.jpg" alt="Dogmas da Igreja" class="course-image" />
+          Dogmas da Igreja
+        </button>
+      </div>
+    
+      <!-- Curso: Consagração a Nossa Senhora -->
+      <div id="consagracao" class="course-content">
+        <h3>Consagração a Nossa Senhora</h3>
+        <p>Curso sobre a consagração a Nossa Senhora.</p>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/JoEZ7SEhWC8"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <button class="back-button" onclick="goBack()">Voltar</button>
+      </div>
+    
+      <!-- Curso: Angelologia -->
+      <div id="angelologia" class="course-content">
+        <h3>Angelologia</h3>
+        <p>Curso sobre a doutrina dos anjos na fé cristã.</p>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/SEU_VIDEO_ID"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <button class="back-button" onclick="goBack()">Voltar</button>
+      </div>
+    
+      <!-- Curso: Mariologia -->
+      <div id="mariologia" class="course-content">
+        <h3>Mariologia</h3>
+        <p>Curso sobre a importância teológica da Virgem Maria.</p>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/SEU_VIDEO_ID"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <button class="back-button" onclick="goBack()">Voltar</button>
+      </div>
+    
+      <!-- Curso: Dogmas da Igreja -->
+      <div id="dogmas" class="course-content">
+        <h3>Dogmas da Igreja</h3>
+        <p>Curso sobre os principais dogmas católicos.</p>
+        <div class="video-container">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/SEU_VIDEO_ID"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <button class="back-button" onclick="goBack()">Voltar</button>
+      </div>
+    </section>
+
+
+      <!--<section id="cursos" class="funcionalidade">
+        <h2>Liturgia</h2>
+        <p>Diferentes gêneros literários disponíveis...</p>
+      </section>-->
+      <section id="Noticias" class="funcionalidade">
+        <h2>Notícias</h2>
+        <p>Últimas atualizações...</p>
+      </section>
+    </main>
+    <script src="./styles.js"></script>
+  </body>
+</html>
